@@ -4,7 +4,7 @@ using System.Collections;
 public class Cheep : MonoBehaviour {
 
     float autoMove;
-    public float speed;
+    public float speed=3.0f;
     float direction;
     public float moveRange;
     Vector2 firstPosition;
@@ -14,9 +14,9 @@ public class Cheep : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        moveRange = 2.0f;
+        speed = Random.Range(1, 3);
+        moveRange = Random.Range(1, 5);
         autoMove = 0;
-        speed = 3;
         cheepSR = GetComponent<SpriteRenderer>();
         cheepBox = GetComponent<BoxCollider2D>();
         direction = 1;

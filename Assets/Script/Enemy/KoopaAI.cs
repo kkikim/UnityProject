@@ -9,16 +9,16 @@ public class KoopaAI : MonoBehaviour {
     float moveDirection;
     float moveVelocity;
     public Vector2 directionVector;
-    float TimeLeftOfFire = 6.0f;      //쿠파 퐈이어 시간변수..//6초마다 발사
+    float TimeLeftOfFire = 3.0f;      //쿠파 퐈이어 시간변수..//6초마다 발사
     float nextTimeOfFire = 0.0f;
 
     float TimeLeftOfJump = 8.0f;
     float nextTimeOfJump = 0.0f;
 
-    float TimeLeftOfMove = 2.0f;
+    float TimeLeftOfMove = 1.0f;
     float nextTimeOfMove = 0.0f;
 
-    float TimeLeftOfGS = 2.0f;
+    float TimeLeftOfGS = 10.0f;
     float nextTimeOfGS = 0.0f;
 
     GameObject player;
@@ -28,13 +28,13 @@ public class KoopaAI : MonoBehaviour {
     public GameObject deadParticle;
     public GameObject Goomba;
     Rigidbody2D rigid2d;
-
+    public GameObject Lastwall;
    
 	// Use this for initialization
 	void Start () 
     {
         isJump = false;
-        hp = 100;
+        hp = 3;
         rigid2d = GetComponent<Rigidbody2D>();
         koopaSR = GetComponent<SpriteRenderer>();
         jumpPower = 450.0f;
@@ -42,6 +42,7 @@ public class KoopaAI : MonoBehaviour {
         moveVelocity = 3.0f;
         player = GameObject.Find("Player");
         directionVector = new Vector2(-1, 0);
+        Lastwall = GameObject.Find("LastWall");
 	}
 	
 	// Update is called once per frame
@@ -51,6 +52,8 @@ public class KoopaAI : MonoBehaviour {
         {
             Instantiate(deadParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            Destroy(Lastwall);
+            
         }
 
         if (Time.time > nextTimeOfJump)         //쿠파점프
@@ -65,11 +68,11 @@ public class KoopaAI : MonoBehaviour {
             Instantiate(koopaFire, new Vector2(this.transform.position.x +directionVector.x*2, this.transform.position.y + 1), Quaternion.identity);
         }
 
-        if (Time.time > nextTimeOfGS)         //굼바 소환
-        {
-            nextTimeOfGS = Time.time + TimeLeftOfGS;
-            Instantiate(Goomba, new Vector2(this.transform.position.x + Random.Range(-5,6), -4.0f), Quaternion.identity);
-        }
+        //if (Time.time > nextTimeOfGS)         //굼바 소환
+        //{
+        //    nextTimeOfGS = Time.time + TimeLeftOfGS;
+        //    Instantiate(Goomba, new Vector2(this.transform.position.x + Random.Range(-5,6), -1.5f), Quaternion.identity);
+        //}
 
         //쿠파 무브.
         if (Time.time > nextTimeOfMove)         

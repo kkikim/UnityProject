@@ -10,6 +10,7 @@ public class Shell : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        Invoke("DestroyObject", 7.0f);
         velocity = 10.0f;
         move = false;
 	}
@@ -49,4 +50,8 @@ public class Shell : MonoBehaviour {
         this.gameObject.tag = "Shell";
     }
 
+    void DestroyObject()
+    {
+        Destroy(this.gameObject);
+    }
 }

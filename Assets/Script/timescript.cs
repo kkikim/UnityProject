@@ -4,17 +4,20 @@ using UnityEngine.UI;
 
 public class timescript : MonoBehaviour {
     Text uitext;
-    static float remainTime;
+    public float remainTime;
 	// Use this for initialization
 	void Start () {
-        remainTime = 300;
+        remainTime = 150;
         uitext = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         remainTime -= Time.deltaTime;
-
+        if(remainTime<0)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
         uitext.text = ((int)remainTime).ToString();
 	}
 }
