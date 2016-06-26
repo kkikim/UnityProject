@@ -3,8 +3,10 @@ using System.Collections;
 
 public class CoinInGround : MonoBehaviour {
     public timescript a;
+    AudioSource coinAudio;
 	// Use this for initialization
 	void Start () {
+        coinAudio = GetComponent<AudioSource>();
 	
 	}
 	
@@ -17,6 +19,7 @@ public class CoinInGround : MonoBehaviour {
         if(coll.gameObject.tag == "Player")
         {
             a.remainTime += 1;
+            coinAudio.Play();
             Destroy(this.gameObject);
         }
     }

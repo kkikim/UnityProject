@@ -18,19 +18,19 @@ public class SceneManager : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            Application.LoadLevel(0);
+            Application.LoadLevel(1);
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            Application.LoadLevel(1);
+            Application.LoadLevel(2);
         }
         if (Input.GetKey(KeyCode.Alpha4))
         {
-            Application.LoadLevel(2);
+            Application.LoadLevel(3);
         }
         if (Input.GetKey(KeyCode.Alpha5))
         {
-            Application.LoadLevel(3);
+            Application.LoadLevel(4);
         }
 	}
 }

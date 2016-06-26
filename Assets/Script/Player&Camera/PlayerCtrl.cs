@@ -17,9 +17,11 @@ public class PlayerCtrl : MonoBehaviour
     public Vector2            currentDirection;      
     public enum            MarioState { Small = 1, Big, Fire};
     public float key;
+    public AudioSource audio;
     // Use this for initialization
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         speed           = 5;
         jumpPower       = 800.0f;
         grounded        = false;
@@ -52,6 +54,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 if (grounded == true&&isjump == false)
                 {// 점프 처리
+                    audio.Play();
                     isjump = true;
                     grounded = false;
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, jumpPower));

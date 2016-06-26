@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RandomBox_coin : MonoBehaviour {
-
+    public timescript a;
     public GameObject coin;
     public int collisionNumber = 5;
     bool isMove;
@@ -33,6 +33,7 @@ public class RandomBox_coin : MonoBehaviour {
 
                 Vector3 pos = this.transform.position;
                 pos.y += 0.1f;
+                a.remainTime += 1;
             }
            
             if(collisionNumber==0)
